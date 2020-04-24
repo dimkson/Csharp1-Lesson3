@@ -15,6 +15,7 @@ namespace Lesson3
         #region Задание1
         static void Task01()
         {
+            //Сложение, вычитание и умножение комплексных чисел
             Complex complex1;
             complex1.im = 1;
             complex1.re = 1;
@@ -22,9 +23,11 @@ namespace Lesson3
             complex2.im = 2;
             complex2.re = 2;
             Complex result = complex1.Plus(complex2);
-            Console.WriteLine(result.ToString());
+            Console.WriteLine("Сложение: " + result.ToString());
             result = complex1.Multi(complex2);
-            Console.WriteLine(result.ToString());
+            Console.WriteLine("Умножение: " + result.ToString());
+            result = complex2.Minus(complex1);
+            Console.WriteLine("Вычитание: " + result.ToString());
             FC.Pause();
         }
         struct Complex
@@ -37,6 +40,13 @@ namespace Lesson3
                 Complex y;
                 y.im = im + x.im;
                 y.re = re + x.re;
+                return y;
+            }
+            public Complex Minus(Complex x)
+            {
+                Complex y;
+                y.im = im - x.im;
+                y.re = re - x.re;
                 return y;
             }
             public Complex Multi(Complex x)
