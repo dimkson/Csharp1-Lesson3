@@ -8,7 +8,7 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = new Menu.delMenu[] { Task01 };
+            Menu.delMenu[] delMenu = new Menu.delMenu[] { Task01, Task02 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -129,6 +129,26 @@ namespace Lesson3
             {
                 return re + "+" + im + "i";
             }
+        }
+        #endregion
+        #region Задание2
+        static void Task02()
+        {
+            //Подсчитать сумму нечетных положительных чисел
+            int sum = 0;
+            string str = string.Empty;
+            FC.Input("Введите число", out int x);
+            str += x;
+            if (x % 2 == 1) sum += x;
+            do
+            {
+                FC.Input("Введите число", out x);
+                str += ", " + x;
+                if (x % 2 == 1) sum += x;
+            } while (x != 0);
+            Console.WriteLine("Введенные числа: " + str);
+            Console.WriteLine("Сумма нечетных положительных чисел равна: " + sum);
+            FC.Pause();
         }
         #endregion
     }
