@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MenuLib;
+using FC = MenuLib.FastConsole;
 
 namespace Lesson3
 {
@@ -10,6 +8,14 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
+            Menu.delMenu[] delMenu = new Menu.delMenu[] { Task01 };
+            Menu menu = new Menu(delMenu);
         }
+        #region Задание1
+        static void Task01()
+        {
+
+        }
+        #endregion
     }
 }
