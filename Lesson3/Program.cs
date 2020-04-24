@@ -15,7 +15,7 @@ namespace Lesson3
         #region Задание1
         static void Task01()
         {
-            //Сложение, вычитание и умножение комплексных чисел
+            //Сложение, вычитание и умножение комплексных чисел на примере структуры Complex
             Complex complex1;
             complex1.im = 1;
             complex1.re = 1;
@@ -23,11 +23,21 @@ namespace Lesson3
             complex2.im = 2;
             complex2.re = 2;
             Complex result = complex1.Plus(complex2);
+            Console.WriteLine("Структура Complex");
             Console.WriteLine("Сложение: " + result.ToString());
             result = complex1.Multi(complex2);
             Console.WriteLine("Умножение: " + result.ToString());
             result = complex2.Minus(complex1);
             Console.WriteLine("Вычитание: " + result.ToString());
+            //Сложение, вычитание и умножение комплексных чисел на примере класса ComplexClass
+            ComplexClass complexClass1 = new ComplexClass(1, 1);
+            ComplexClass complexClass2 = new ComplexClass(2, 2);
+            complexClass1.Im = 3;
+            complexClass1.Re = 3;
+            ComplexClass resultClass;
+            resultClass = complexClass1.Plus(complexClass2);
+            Console.WriteLine("Класс ComplexClass");
+            Console.WriteLine("Сложение: " + resultClass.ToString());
             FC.Pause();
         }
         struct Complex
@@ -56,6 +66,45 @@ namespace Lesson3
                 y.re = re * x.im + im * x.re;
                 return y;
             }
+            public override string ToString()
+            {
+                return re + "+" + im + "i";
+            }
+        }
+        class ComplexClass
+        {
+            private double im;
+            private double re;
+
+            public ComplexClass()
+            {
+                im = 0;
+                re = 0;
+            }
+            public ComplexClass(double im, double re)
+            {
+                this.im = im;
+                this.re = re;
+            }
+            public double Im
+            {
+                get { return im; }
+                set { if (value > 0) im = value; }
+            }
+            public double Re
+            {
+                get { return re; }
+                set { if (value > 0) re = value; }
+            }
+
+            public ComplexClass Plus(ComplexClass x)
+            {
+                ComplexClass y = new ComplexClass();
+                y.im = im + x.im;
+                y.re = re + x.re;
+                return y;
+            }
+            
             public override string ToString()
             {
                 return re + "+" + im + "i";
