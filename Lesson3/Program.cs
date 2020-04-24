@@ -38,6 +38,12 @@ namespace Lesson3
             resultClass = complexClass1.Plus(complexClass2);
             Console.WriteLine("Класс ComplexClass");
             Console.WriteLine("Сложение: " + resultClass.ToString());
+            resultClass = complexClass1.Multi(complexClass2);
+            Console.WriteLine("Умножение: " + resultClass.ToString());
+            complexClass1.Im = 1;
+            complexClass1.Re = 1;
+            resultClass = complexClass2.Minus(complexClass1);
+            Console.WriteLine("Вычитание: " + resultClass.ToString());
             FC.Pause();
         }
         struct Complex
@@ -86,6 +92,7 @@ namespace Lesson3
                 this.im = im;
                 this.re = re;
             }
+
             public double Im
             {
                 get { return im; }
@@ -104,13 +111,25 @@ namespace Lesson3
                 y.re = re + x.re;
                 return y;
             }
-            
+            public ComplexClass Minus(ComplexClass x)
+            {
+                ComplexClass y = new ComplexClass();
+                y.im = im - x.im;
+                y.re = re - x.re;
+                return y;
+            }
+            public ComplexClass Multi(ComplexClass x)
+            {
+                ComplexClass y = new ComplexClass();
+                y.im = im * x.im + re * x.im;
+                y.re = re * x.im + im * x.re;
+                return y;
+            }
             public override string ToString()
             {
                 return re + "+" + im + "i";
             }
         }
-
         #endregion
     }
 }
