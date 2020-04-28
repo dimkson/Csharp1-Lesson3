@@ -163,7 +163,8 @@ namespace Lesson3
             Fraction result = f1 + f2;
             Console.WriteLine("result = f1 + f2 = " + result);
             Console.WriteLine("result = result - f3 = " + (result - f3));
-            Console.WriteLine("f1 * f2 = " + (f1 * f2));
+            result = f1 * f2;
+            Console.WriteLine("f1 * f2 = " + result);
             Console.WriteLine("f3 / f2 = " + (f3 / f2));
             FC.Pause();
         }
@@ -208,8 +209,16 @@ namespace Lesson3
             {
                 return new Fraction(f1.Chisl * f2.Znam, f1.Znam * f2.Chisl);
             }
+            public void Simplify()
+            {
+                int x = Znam;
+                while (Chisl % x != 0 || Znam % x != 0) x--;
+                Chisl /= x;
+                Znam /= x;
+            }
             public override string ToString()
             {
+                this.Simplify();
                 return Chisl + "/" + Znam;
             }
         }
