@@ -8,7 +8,7 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = new Menu.delMenu[] { Task01, Task02 };
+            Menu.delMenu[] delMenu = new Menu.delMenu[] { Task01, Task02, Task03 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -154,7 +154,64 @@ namespace Lesson3
         #region Задание3
         static void Task03()
         {
-
+            Fraction f1 = new Fraction(3, 5);
+            Fraction f2 = new Fraction(4, 3);
+            Fraction f3 = new Fraction(5, 3);
+            Console.WriteLine("Первая дробь f1: " + f1);
+            Console.WriteLine("Вторая дробь f2: " + f2);
+            Console.WriteLine("Третья дробь f3: " + f3);
+            Fraction result = f1 + f2;
+            Console.WriteLine("result = f1 + f2 = " + result);
+            Console.WriteLine("result = result - f3 = " + (result - f3));
+            Console.WriteLine("f1 * f2 = " + (f1 * f2));
+            Console.WriteLine("f3 / f2 = " + (f3 / f2));
+            FC.Pause();
+        }
+        class Fraction
+        {
+            private int znam;
+            int Chisl { get; set; }
+            int Znam
+            {
+                get { return znam; }
+                set
+                {
+                    if (value != 0) znam = value;
+                    else
+                        throw new Exception("Знаменатель не может равняться 0!");
+                }
+            }
+            public Fraction(int chisl, int znam)
+            {
+                Chisl = chisl;
+                Znam = znam;
+            }
+            public static Fraction operator + (Fraction f1, Fraction f2)
+            {
+                if (f1.Znam == f2.Znam)
+                    return new Fraction(f1.Chisl + f2.Chisl, f1.Znam);
+                else
+                    return new Fraction(f1.Chisl * f2.Znam + f2.Chisl * f1.Znam, f1.Znam * f2.Znam);
+            }
+            public static Fraction operator - (Fraction f1, Fraction f2)
+            {
+                if (f1.Znam == f2.Znam)
+                    return new Fraction(f1.Chisl - f2.Chisl, f1.Znam);
+                else
+                    return new Fraction(f1.Chisl * f2.Znam - f2.Chisl * f1.Znam, f1.Znam * f2.Znam);
+            }
+            public static Fraction operator * (Fraction f1, Fraction f2)
+            {
+                return new Fraction(f1.Chisl * f2.Chisl, f1.Znam * f2.Znam);
+            }
+            public static Fraction operator / (Fraction f1, Fraction f2)
+            {
+                return new Fraction(f1.Chisl * f2.Znam, f1.Znam * f2.Chisl);
+            }
+            public override string ToString()
+            {
+                return Chisl + "/" + Znam;
+            }
         }
         #endregion
     }
