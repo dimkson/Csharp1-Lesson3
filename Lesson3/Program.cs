@@ -151,5 +151,11 @@ namespace Lesson3
             FC.Pause();
         }
         #endregion
+        #region Задание3
+        static void Task03()
+        {
+
+        }
+        #endregion
     }
 }
